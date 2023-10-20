@@ -22,6 +22,6 @@ public class ClearPresenter implements ClearOutputBoundary {
     }
 
     private String getFormattedUsernamesString(ClearOutputData data) {
-        return String.join("\n", data.getUsersDeleted().stream().map(User::getName).toList());
+        return String.join("\n", data.usernamesOfUsersDeleted());
     }
 }

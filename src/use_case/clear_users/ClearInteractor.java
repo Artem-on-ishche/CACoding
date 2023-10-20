@@ -1,5 +1,7 @@
 package use_case.clear_users;
 
+import entity.User;
+
 public class ClearInteractor implements ClearInputBoundary {
 
     private final ClearUserDataAccessInterface clearUserDao;
@@ -13,6 +15,6 @@ public class ClearInteractor implements ClearInputBoundary {
     @Override
     public void execute() {
         var users = clearUserDao.deleteAll();
-        clearPresenter.prepareView(new ClearOutputData(users));
+        clearPresenter.prepareView(new ClearOutputData(users.stream().map(User::getName).toList()));
     }
 }
